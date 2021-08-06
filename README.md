@@ -1,11 +1,13 @@
 # sms-comms
 a simple flask server that does sms-forwarding and auto-reply for event location
 
-TODO:
+## setup
+note: you'll want a mongodb credential to do anything database related
 
-- [ ] add a database for phone numbers
-- [ ] integrate properly with twilio
-- [ ] setup ci/cd
+```
+python3 -m venv env  # create a virtual env 
+pip3 install -r requirements.txt  # install all the required packages
+```
 
 To run you'll need to create a .env file in the top level directory
 e.g.
@@ -18,3 +20,15 @@ DB_URL=<URL>
 DB_PW=<SECRET_PASSWORD>
 DB_USER=<USERNAME>
 ```
+
+## project goals
+
+TODO:
+
+- [x] add a database
+- [ ] fetch phone numbers
+- [ ] integrate properly with twilio
+- [ ] setup ci/cd
+
+
+
