@@ -10,14 +10,14 @@ It should also reply when texted for event details
 
 from flask import Flask, Response, request
 from twilio import twiml
-from dotenv import dotenv_values
+from dotenv import load_dotenv
+import os
 
-config = dotenv_values(".env")
+load_dotenv()
 
-
-EVENT_LOCATION = config['EVENT_LOCATION']
-GEO_LOCATION = config['GEO_LOCATION']
-EVENT_TIME = config['EVENT_TIME']
+EVENT_LOCATION = os.environ.get('EVENT_LOCATION')
+GEO_LOCATION = os.environ.get('GEO_LOCATION')
+EVENT_TIME = os.environ.get('EVENT_TIME')
 
 app = Flask(__name__)
 

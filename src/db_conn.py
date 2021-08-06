@@ -6,15 +6,16 @@ This is a database connector module to fetch
 phone number details from mongoDB atlas
 """
 
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 from pymongo import MongoClient
 from pprint import pprint
+import os
 
-config = dotenv_values(".env")
+load_dotenv()
 
-DB_PW = config['DB_PW']
-DB_USER = config['DB_USER']
-DB_URL = config['DB_URL']
+DB_PW = os.environ.get('DB_PW')
+DB_USER = os.environ.get('DB_USER')
+DB_URL = os.environ.get('DB_URL')
 
 
 def connect():
