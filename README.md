@@ -9,7 +9,7 @@ python3 -m venv env  # create a virtual env
 pip3 install -r requirements.txt  # install all the required packages
 ```
 
-To run you'll need to create a .env file in the top level directory
+To run you'll need to create a ```.env``` file in the top level directory
 e.g.
 ```
 EVENT_LOCATION="Westgate Bridge"

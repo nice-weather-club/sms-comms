@@ -34,3 +34,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+      env:
+        EVENT_LOCATION: "Westgate Bridge"
+        GEO_LOCATION: "-37.83184926174339, 144.90473068626446"
+        EVENT_TIME: "11.30PM"
