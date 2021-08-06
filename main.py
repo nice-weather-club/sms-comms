@@ -54,7 +54,7 @@ def inbound_sms():
 def recieve_sms():
     """This function is to forward messages to existing users
     """
-    response = twiml.Response()
+    # response = twiml.Response()
     inbound_message = request.form.get("Body")
     print(inbound_message)
     # TODO: add some database connecting code
