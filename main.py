@@ -27,15 +27,15 @@ def hello():
     return Response("App is running!"), 200
 
 
-@app.route("/getlocation", methods=["POST"])
+@app.route("/getLocation", methods=["POST"])
 def inbound_sms():
     """This function returns the location of the rave when somebody sends a message
     """
     response = twiml.Response()
-    # we get the SMS message from the request. we could also get the
+    # we get the SMS message from the request. we can also get
     # "To" and the "From" phone number as well
     inbound_message = request.form.get("Body")
-    # we can now use the incoming message text in our Python application
+    # we can now use the incoming message text
     # TODO: maybe use a regex here to search for "location" or "where"?
     if inbound_message == "YES":
         response.message(
@@ -50,16 +50,15 @@ def inbound_sms():
     return Response(str(response), mimetype="application/xml"), 200
 
 
+@app.route("/forwardMsg", methods=["POST"])
 def recieve_sms():
-    pass
-
-
-def send_sms():
-    pass
+    """This function is to forward messages to existing users
+    """
+    response = twiml.Response()
+    inbound_message = request.form.get("Body")
+    print(inbound_message)
+    # TODO: add some database connecting code
 
 
 if __name__ == "__main__":
-    message = f"Hey tripper! The party location is at {EVENT_LOCATION} " \
-             + f"({GEO_LOCATION}) - starting at {EVENT_TIME}!!!"
-    print(message)
-    # app.run(debug=True)
+    app.run(debug=True)
