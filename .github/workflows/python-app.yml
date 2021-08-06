@@ -24,7 +24,6 @@ jobs:
       env:
         GEO_LOCATION: ${{ secrets.GEO_LOCATION }}
         EVENT_LOCATION: ${{ secrets.EVENT_LOCATION }}
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
