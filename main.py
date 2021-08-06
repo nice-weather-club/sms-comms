@@ -4,6 +4,8 @@
 @author Isaac Keeher
 This program is an sms forwarder meant to recieve a
 text message and forward it on to multiple numbers
+
+It should also reply when texted for event details
 """
 
 from flask import Flask, Response, request
@@ -34,11 +36,16 @@ def inbound_sms():
     # "To" and the "From" phone number as well
     inbound_message = request.form.get("Body")
     # we can now use the incoming message text in our Python application
-    if inbound_message is not None:
-        response.message(f"Hey tripper! The party location is \
-             {EVENT_LOCATION} - {GEO_LOCATION} - starting at {EVENT_TIME}")
+    # TODO: maybe use a regex here to search for "location" or "where"?
+    if inbound_message == "YES":
+        response.message(
+            f"Hey tripper! The party location is \
+             {EVENT_LOCATION} - {GEO_LOCATION} - starting at {EVENT_TIME}"
+             )
     else:
-        response.message("Do you want to know where the party is?")
+        response.message(
+            "Do you want to know where the party is? If so, reply 'YES'"
+            )
     # we return back the mimetype because Twilio needs an XML response
     return Response(str(response), mimetype="application/xml"), 200
 
