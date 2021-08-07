@@ -5,7 +5,8 @@ a simple flask server that does sms-forwarding and auto-reply for event location
 note: you'll want a mongodb credential to do anything database related
 
 ```
-python3 -m venv env  # create a virtual env 
+python3 -m venv env  # create a virtual env
+source env/bin/activate
 pip3 install -r requirements.txt  # install all the required packages
 ```
 
