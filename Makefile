@@ -1,7 +1,8 @@
 HOST=127.0.0.1
 PORT=5000
-TEST_PATH=./
 ENVIRONMENT=development
+
+all: help
 
 build:
 	python3 -m venv venv
@@ -16,7 +17,7 @@ clean:
 run: 
 	. venv/bin/activate
 	FLASK_APP=main.py \
-		FLASK_ENV=development \
+		FLASK_ENV=${ENVIRONMENT} \
 		./venv/bin/flask run --host=${HOST} --port=${PORT}
 
 lint:
@@ -38,5 +39,19 @@ test:
 #       --name=sms-comms \
 #       --publish=$(HOST):8080 \
 #       sms-comms
+
+help:
+	@echo "    build"
+	@echo "        Build virtual env and install packages"
+	@echo "    clean"
+	@echo "        Remove python artifacts."
+	@echo '    run'
+	@echo '        Run the `sms-comms' service on localhost, OPTIONAL: specify the port --PORT=5000 and/or --HOST=0.0.0.0 
+	@echo "    lint"
+	@echo "        Check style with flake8."
+	@echo "    test"
+	@echo "        Run all unit tests in the test directory"
+	@echo '    docker-run'
+	@echo '        Build and run the `sms-comms` service in a Docker container.'
 
 .PHONY: build clean run lint test
